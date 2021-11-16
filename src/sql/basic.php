@@ -10,7 +10,7 @@
 		 * @param array<int, string|int> $parameters
 		 * @param array<string, string> $identifiers
 		 */
-		function query($sql, $parameters = [], $identifiers = []): void {
+		public function query($sql, $parameters = [], $identifiers = []): void {
 
 			foreach ($identifiers as $name => $value) {
 				if (!preg_match('/^[a-z0-9_]+$/', strval($name))) {
@@ -30,7 +30,7 @@
 		/**
 		 * @return literal-string
 		 */
-		function placeholders(int $count): string {
+		public function placeholders(int $count): string {
 			$sql = '?';
 			for ($k = 1; $k < $count; $k++) {
 				$sql .= ',?';
@@ -44,13 +44,14 @@
 
 		private string $value = '';
 
-		function __construct(string $unsafe_value) {
+		public function __construct(string $unsafe_value) {
 			$this->value = $unsafe_value;
 		}
 
-		function __toString(): string {
+		public function __toString(): string {
 			return $this->value;
 		}
+
 	}
 
 //--------------------------------------------------
@@ -156,5 +157,3 @@
 
 	$db->query($sql, $parameters, $identifiers);
 
-
-?>
