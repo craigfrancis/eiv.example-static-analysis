@@ -61,7 +61,7 @@
 
 	$id = (string) ($_GET['id'] ?? '123');
 
-	$id = strtolower($id); // Ensure it's not seen as a literal-string
+	$id = trim($id); // Ensure it's not seen as a literal-string
 
 	$db->query('SELECT name FROM user WHERE id = ?', [$id]);
 
@@ -136,7 +136,7 @@
 			'field_2' => 'dob',
 		];
 
-	$identifiers = array_map('strtolower', $identifiers); // Ensure they are not literal-string
+	$identifiers = array_map('trim', $identifiers); // Ensure they are not literal-string
 
 	$with_sql = '{with_1} AS (SELECT id, name, type, {field_1} as f1, deleted FROM {table_1})';
 
