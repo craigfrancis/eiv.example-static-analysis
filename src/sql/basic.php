@@ -65,7 +65,7 @@
 
 	$db->query('SELECT name FROM user WHERE id = ?', [$id]);
 
-	// $db->query('SELECT name FROM user WHERE id = ' . $id); // INSECURE
+	$db->query('SELECT name FROM user WHERE id = ' . $id); // INSECURE
 
 
 //--------------------------------------------------
