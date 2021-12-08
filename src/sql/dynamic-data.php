@@ -103,6 +103,12 @@
 		$where_sql .= ' AND
 				t.id IN (' . $db->placeholders(count($ids)) . ')';
 
+			// While array_map('intval', $ids) can work, it's easy to forget.
+			// Instead, just use parameterised queries:
+			//   Levi Morrison             = https://stackoverflow.com/a/23641033/538216
+			//   PDO Execute               = https://www.php.net/manual/en/pdostatement.execute.php#example-1012
+			//   Drupal Multiple Arguments = https://www.drupal.org/docs/7/security/writing-secure-code/database-access#s-multiple-arguments
+
 
 		$sql = '
 			SELECT
