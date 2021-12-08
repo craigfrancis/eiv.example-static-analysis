@@ -4,6 +4,11 @@
 // Allow list
 
 	//--------------------------------------------------
+	// Unsafe input
+
+		$field_unsafe = (string) ($_GET['field'] ?? NULL);
+
+	//--------------------------------------------------
 	// Library
 
 		/**
@@ -12,8 +17,6 @@
 		function require_literal_string(string $input): void {
 			echo $input . "\n";
 		}
-
-		$field_unsafe = (string) ($_GET['field'] ?? NULL);
 
 	//--------------------------------------------------
 	// Example 1
